@@ -1,0 +1,24 @@
+﻿<!-- Tipando a VIEW para que ela seja do TIPO de uma LISTA de FUNCIONÁRIOS-->
+<!-- IEnumerable é o tipo mais genérico de lista que existe. -->
+@model IEnumerable<EntityFramework.Models.Funcionario>
+
+<!-- OBS: Quando passamos a lista de ENTIDADES do TIPO FUNCIONARIO para a o PARÂMETRO retornado pela ACTION INDEX, que retorna uma VIEW com os DADOS via parâmetro, Esses DADOS são ENVIADOS automaticamente para a propriedade MODEL dessa VIEW, então a partir do MODEL podemos acessar os dados passados via parâmetro dá VIEW RETORNADA. -->
+<!-- OBS2: É importante também TIPARMOS a nossa VIEW com o TIPO do MODEL, para que possamos dizer QUE TIPO SERÁ MANIPULADO POR NÓS, ou seja: dizermos qual será o tipo recebido via parâmetro. -->
+
+<h2>Todos os Funcionários</h2>
+<!-- Podemos usar a TAG para nos REDICIONAR para outras ROTAS que BATEM em ACTIONS -->
+<a href="/Funcionarios/Cadastrar" class="btn btn-success">Novo Funcionário</a>
+
+@foreach (var funcionario in Model)
+{
+    <div class="border border-dark">
+         <p>Nome: @funcionario.Nome</p>
+            <p>Salário: @funcionario.Salario</p>
+        <p>Cpf: @funcionario.Cpf</p>
+        <!-- os Id dos funcionários seram RECEBIDOS via parâmetro na ACTION a qual é CHAMADA/REFERÊNCIADA -->
+        <a href="/Funcionarios/Editar/@funcionario.Id" class="btn btn-success">Editar</a>
+        <a href="/Funcionarios/Excluir/@funcionario.Id" class="btn btn-danger">Excluir</a>
+    </div>
+   
+}
+

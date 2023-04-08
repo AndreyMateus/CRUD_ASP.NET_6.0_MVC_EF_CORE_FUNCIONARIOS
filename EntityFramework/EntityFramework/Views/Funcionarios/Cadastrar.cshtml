@@ -1,0 +1,31 @@
+﻿<!-- Tipando/Linkando a VIEW -->
+<!-- Você acessa o NAMESPACE e após chega na pasta, você acessará a CLASSE/ENTIDADE que você quer referênciar -->
+@model EntityFramework.Models.Funcionario 
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>title</title>
+</head>
+<body>
+
+<!-- diretivas/atributos Razer para definir a rota/caminho de quem irá receber os dados/ ser executado após o botão enviar ser clicado.-->
+<form class="form-horizontal" asp-controller="Funcionarios" asp-action="Salvar" method="POST">
+
+    <!-- Campo Escondido -->
+    <input type="hidden" asp-for="Id"/>
+    
+    <!-- Temos que dizer a PROPRIEDADE da ENTIDADE o INPUT representa-->
+    <input type="text" class="form-control" asp-for="Nome" placeholder="Nome"/>
+
+    <input type="number" class="form-control" asp-for="Salario" placeholder="Salario"/>
+
+    <input type="text" class="form-control" asp-for="Cpf" placeholder="Cpf"/>
+
+    <!-- CSRF é EVITADO automaticamente, prefine que o SITE não sofra ataque DDOS, o próprio ASP.NET já adiciona isso para nós quando converte nosso código para HTML-->
+    <button class="btn btn-success">Cadastrar</button>
+    
+</form>
+
+</body>
+</html>
